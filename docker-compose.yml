@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  product-service:
+    build: ./micro-service-ref-app
+    ports:
+      - 9002:9002
+  website:
+    build: 
+      context: ./ui-ref-app
+    ports:
+      - 9001:9001
+    links:
+      - product-service:micro-service-ref-app
+
+
+
+      # docker-compose up --build
